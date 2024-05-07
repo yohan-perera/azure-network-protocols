@@ -36,7 +36,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <h2>Actions and Observations</h2>
 
 <p>
-![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/23c537fe-f24f-4693-8ba0-b97996c06f14)
+<img src="![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/23c537fe-f24f-4693-8ba0-b97996c06f14)" />
 </p>
 <p>
 Create Resource Group
