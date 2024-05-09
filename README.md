@@ -34,105 +34,138 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 - Close RDP connection and clean up Azure resources
 
 <h2>Actions and Observations</h2>
+<br />
+<p>
+Create Resource Group in Azure.
+</p>
+<br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/23c537fe-f24f-4693-8ba0-b97996c06f14)
+
+<br />
 <p>
-Create Resource Group
+Create Virtual Machine 1 (Windows 10) in Azure.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/885620c0-0420-487c-91ee-78a28d57af1c)
+
+<br />
 <p>
-Create Virtual Machine 1 (Windows 10)
+Create Virtual Network and Network Security Group in Azure (used for VM1 and VM2).
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/0b4fec17-f509-4ec7-ba13-015a43b4c814)
+
+<br />
 <p>
-Create Virtual Network and Network Security Group (used for VM1 and VM2)
+Network Overview found in auto-created NetworkWatcherRG Resource Group.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/d59eadda-7412-40f3-bc2a-fa03b8e46465)
+
+<br />
 <p>
-Network Overview found in auto-created NetworkWatcherRG Resource Group
+Create Virtual Machine 2 (Linux – Ubuntu) in Azure.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/1f0cfb12-7f80-49e9-9f8c-bcb1c9fa9efa)
+
+<br />
 <p>
-Create Virtual Machine 2 (Linux – Ubuntu)
+Establish RDP (Remote Desktop Protocol) Connection to VM1.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/6f467afb-4044-475d-bfa6-9c66016c5cef)
+
+<br />
 <p>
-Establish RDP (Remote Desktop Protocol) Connection to VM1
+Download and install Wireshark on VM1.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/a7453233-aed0-47f3-ade9-8a4c2a4a3d9d)
+
+<br />
 <p>
-Download and install Wireshark on VM1
+Open Wireshark, filter to ICMP traffic, and ping VM2 (private IP) and public website (www.google.com).
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/804abe5a-53b3-490c-b81f-8e7016fae8c2)
+
+<br />
 <p>
-Open Wireshark, filter to ICMP traffic, and ping VM2 (private IP) and public website (www.google.com)
+Initiate perpetual ping of VM2 in terminal.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/6a97b4ee-ebc5-4c63-892c-f43b10b72271)
+
+<br />
 <p>
-Initiate perpetual ping of VM2 in terminal
+Access VM2 Network Security Group and add rule to block incoming ICMP traffic.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/64139466-a2d8-4fb0-96f3-03d75e266d4f)
+
+<br />
 <p>
-Access VM2 Network Security Group and add rule to block incoming ICMP traffic
+All ICMP requests are denied, no response from ping.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/4b7a7b14-15b8-4a9f-860f-33df065f208e)
+
+<br />
 <p>
-All ICMP requests are denied, no response from ping
+NSG inbound rule ammended to allow ICMP traffic.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/fb5f215f-a198-4368-a71e-c66d819937f7)
+
+<br />
 <p>
-NSG inbound rule ammended to allow ICMP traffic
+ICMP traffic is allowed again, response from ping.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/6502933a-e22e-4c1e-9eeb-4bdb5b6dec70)
+
+<br />
 <p>
-ICMP traffic is allowed again, response from ping
+Establish SSH connection to VM2 and observe packets in Wireshark.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/d63eec8b-dd0f-4685-8230-5988066be20a)
+
+<br />
 <p>
-Establish SSH connection to VM2 and observe packets in Wireshark
+Issue VM1 new IP  address and observe DHCP traffic in Wireshark.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/daffc98b-6aff-4143-aee9-75f98d064238)
+
+<br />
 <p>
-Issue VM1 new IP  address and observe DHCP traffic in Wireshark
+Use nslookup command to obtain IP addresses and obsereve DNS traffic in Wireshark.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/b1086fc7-ed6f-4a66-9345-e9ca697443fe)
+
+<br />
 <p>
-Use nslookup command to obtain IP addresses and obsereve DNS traffic in Wireshark
+Observe RDP traffic in Wireshark (TCP port 3389). RDP traffic is constantly being transmitted due to live session connecting to VM1.
 </p>
 <br />
 
 ![image](https://github.com/yohan-perera/azure-network-protocols/assets/156178441/8ffa492a-a8f0-44d7-b6a6-e3bc6939779c)
-<p>
-Observe RDP traffic in Wireshark (TCP port 3389). RDP traffic is constantly being transmitted due to live session connecting to VM1
-</p>
-<br />
