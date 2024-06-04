@@ -20,7 +20,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>High-Level Steps</h2>
 
-- Using resources in Azure, create environment consisting of a Windows 10 Virtual Machinee (VM), a Linux Ubuntu VM, and a Virtual Network and Subnet
+- Using resources in Azure, create environment consisting of a Windows 10 Virtual Machine (VM), a Linux Ubuntu VM, and a Virtual Network and Subnet
 - Use Remote Desktop Protocol (RDP) to connect to Windows 10 VM
 - Install Wireshark on Windows 10 VM
 - Set Wireshark to filter for ICMP packets and attempt to ping a public website, observing ping requests and replies
